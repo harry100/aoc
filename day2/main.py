@@ -8,6 +8,7 @@ def get_values(l):
     case['maxOccurence'] = int(l[0].split(" ")[0].split("-")[1])
     return case
 
+#Sol 1
 validPasswords = 0
 for d in data:
     c = get_values(d.split(":"))
@@ -19,3 +20,16 @@ for d in data:
             validPasswords += 1
 
 print(validPasswords)
+
+
+# Sol 2
+validPasswordLength = 0
+for d in data:
+    c = get_values(d.split(":"))
+    min = c['minOccurence']
+    max = c['maxOccurence']
+    matchChar = c['matchVal']
+    if ((c['password'][min] == matchChar) != (c['password'][max] == matchChar)):
+        validPasswordLength += 1
+
+print(validPasswordLength)
