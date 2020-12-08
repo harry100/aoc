@@ -84,20 +84,11 @@ valid = 0
 
 def validate(p):
     for field, func in validators.items():
-        # if field not in p.keys():
-        #     return 0
-        # else:
-        #     if func(p[field]):
-        #         return 1
-        #     else:
-        #         return 0
-        print(field, check_hgt('74in'))
         if field not in p.keys() and field != 'cid':
             return 0
         if field != 'cid':
             if not func(p[field]):
                 return 0
-        # print
     print(p[field], func(p[field]), field)
     return 1
 
