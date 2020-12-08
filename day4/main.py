@@ -1,14 +1,28 @@
-keys = ["ecl:", "eyr:", "hcl:", "byr:", "iyr:", "hgt:", "pid:"]
+keys = ["ecl", "eyr", "hcl", "byr", "iyr", "hgt", "pid"]
 
 correct_passwords_length = 0
 with open ('./data.txt', 'r') as f:
-    list_data = f.read().split("\n\n")
-    for d in list_data:
-        matches = [key for key in keys if key in d]
-        if(len(matches) == 7):
-            correct_passwords_length += 1
-    # for d in list_data:
-    #     cleaned = d.replace(" ", ", ").replace("\n", ", ")
-    #     data.append(cleaned)
-    
-print(correct_passwords_length)
+    data = f.read().split("\n\n")
+
+list_data = []
+
+for d in data:
+    cleaned = d.replace("\n", " ")
+    cleaned = cleaned.split(" ")
+    if(len(cleaned) > 6):
+        list_data.append(cleaned)
+
+passes = []
+correct = 0
+
+for data in list_data:
+    obj = {}
+    for d in data:
+        key, value = d.split(":")
+        obj[key] = value
+    passes.append(obj)
+
+for p in passes:
+    if all(key in p for key in keys):
+        correct += 1
+print(correct)
