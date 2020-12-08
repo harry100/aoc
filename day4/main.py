@@ -89,7 +89,6 @@ def validate(p):
         if field != 'cid':
             if not func(p[field]):
                 return 0
-    print(p[field], func(p[field]), field)
     return 1
 
-print('sum', sum(validate(p) for p in passes))
+print('sol2', sum(validate(p) for p in passes))
