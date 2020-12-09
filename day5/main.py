@@ -4,8 +4,8 @@ with open('data.txt', 'r') as f:
     paths = f.read()
     l = paths.split('\n')
 
+seat_id = []
 def get_seat_id(data = l):
-    seat_id = []
 
     for d in data:
         firstRow, lastRow, firstCol, lastCol = 0.0, 127.0, 0.0, 7.0
@@ -24,3 +24,7 @@ def get_seat_id(data = l):
 
 greatest_seat_id = get_seat_id()
 print(greatest_seat_id)
+
+for i in range(min(seat_id), max(seat_id) + 1):
+    if (i not in seat_id and i+1 in seat_id and i-1 in seat_id):
+        print(i)
